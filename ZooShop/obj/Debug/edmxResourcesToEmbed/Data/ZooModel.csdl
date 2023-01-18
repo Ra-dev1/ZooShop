@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZooShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Worker_id" Type="Int32" />
+    <Property Name="Role_id" Type="Int32" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Account_Role" FromRole="Account" ToRole="Role" />
+    <NavigationProperty Name="Worker" Relationship="Self.FK_Account_Worker" FromRole="Account" ToRole="Worker" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int64" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Price" Type="Int64" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Account_Role" FromRole="Role" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Patranomyc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Position" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Account_Worker" FromRole="Worker" ToRole="Account" />
+  </EntityType>
+  <Association Name="FK_Account_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Account_Worker">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Worker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ZooShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Account" EntityType="Self.Account" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="Worker" EntityType="Self.Worker" />
+    <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Account_Worker" Association="Self.FK_Account_Worker">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

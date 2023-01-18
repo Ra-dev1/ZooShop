@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ZooShopModelContainer" CdmEntityContainer="ZooShopEntities">
+    <EntitySetMapping Name="Account">
+      <EntityTypeMapping TypeName="ZooShopModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Worker_id" ColumnName="Worker_id" />
+          <ScalarProperty Name="Role_id" ColumnName="Role_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accounting">
+      <EntityTypeMapping TypeName="ZooShopModel.Accounting">
+        <MappingFragment StoreEntitySet="Accounting">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id_worker" ColumnName="id_worker" />
+          <ScalarProperty Name="Id_Product" ColumnName="Id_Product" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Total_price" ColumnName="Total_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="ZooShopModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="ZooShopModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Worker">
+      <EntityTypeMapping TypeName="ZooShopModel.Worker">
+        <MappingFragment StoreEntitySet="Worker">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Patranomyc" ColumnName="Patranomyc" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

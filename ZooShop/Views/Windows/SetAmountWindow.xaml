@@ -1,0 +1,17 @@
+﻿<Window x:Class="ZooShop.Views.Windows.SetAmountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZooShop.Views.Windows"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Сколько" Height="150" Width="400">
+    <Grid>
+        <StackPanel>
+            <TextBox x:Name="AmountTB" materialDesign:HintAssist.Hint="Количество" Margin="5" Text="{Binding Position}" 
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalContentAlignment="Center"/>
+            <Button HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Content="Потвердить" x:Name="Confirm" Click="Confirm_Click" Margin=" 5"/>
+        </StackPanel>
+    </Grid>
+</Window>
